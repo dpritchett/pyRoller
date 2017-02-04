@@ -1,50 +1,24 @@
 from flask import Flask
-from random import choice
+from flask import abort
+
+from dice import roll
 
 application = Flask(__name__)
 
-dice_map = {
-  1: """ -----
-|     |
-|  o  |
-|     |
- -----""",
-
-  2: """ -----
-| o   |
-|     |
-|   o |
- -----""",
-
-3: """ -----
-| o   |
-|  o  |
-|   o |
- -----""",
-
-4: """ -----
-| o o |
-|     |
-| o o |
- -----""",
-
-5: """ -----
-| o o |
-|  o  |
-| o o |
- -----""",
-
-6: """ -----
-| o o |
-| o o |
-| o o |
- -----"""
- }
-
 @application.route("/")
-def hello():
-    face = choice(dice_map)
-    return "<pre>" + face + "</pre"
+def root():
+    return preformat()
+
+@application.route("/<int:n>")
+def show_face(n):
+    if n < 1 or n > 6:
+        abort(422)
+    else:
+        return preformat(n)
+
+def preformat(n=None):
+    face = roll(n)
+    return "<pre>" + face + "</pre>"
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0')
