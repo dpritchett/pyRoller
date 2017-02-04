@@ -1,0 +1,21 @@
+{
+    "default": {
+        "uwsgi": {
+            "version": "==2.0.14",
+            "hash": "sha256:21b3d1ef926d835ff23576193a2c60d4c896d8e21567850cf0677a4764122887"
+        }
+    },
+    "develop": {},
+    "_meta": {
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ],
+        "requires": {},
+        "hash": {
+            "sha256": "36a2265765a9b588d85ba656c7b6be8b8489731eeb4b0ee2d2a44ed946ec3d0c"
+        }
+    }
+}
