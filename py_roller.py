@@ -5,9 +5,11 @@ from dice import roll
 
 application = Flask(__name__)
 
+
 @application.route("/")
 def root():
     return preformat()
+
 
 @application.route("/<int:n>")
 def show_face(n):
@@ -15,6 +17,7 @@ def show_face(n):
         abort(422)
     else:
         return preformat(n)
+
 
 def preformat(n=None):
     face = roll(n)
